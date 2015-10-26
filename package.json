@@ -4,7 +4,8 @@
   "description": "Se-Free",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha src/index.test.js -w"
+    "test": "mocha src/index.test.js -w",
+    "test:single": "mocha src/index.test.js"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,7 @@
   },
   "config": {
     "ghooks": {
-      "pre-commit": "npm run test"
+      "pre-commit": "npm run test:single"
     }
   }
 }
