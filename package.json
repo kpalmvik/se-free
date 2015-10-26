@@ -4,10 +4,10 @@
   "description": "Se-Free",
   "main": "dist/index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha src/index.test.js -w --compilers js:babel/register",
-    "test:single": "./node_modules/.bin/mocha src/index.test.js --compilers js:babel/register",
+    "test": "mocha src/index.test.js -w --compilers js:babel/register",
+    "test:single": "mocha src/index.test.js --compilers js:babel/register",
     "prebuild": "rm -rf dist && mkdir dist",
-    "build": "./node_modules/.bin/babel src/index.js -o dist/index.js"
+    "build": "babel src/index.js -o dist/index.js"
   },
   "repository": {
     "type": "git",
