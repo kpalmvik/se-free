@@ -1,0 +1,20 @@
+{
+  "name": "se-free",
+  "version": "0.0.1",
+  "description": "Se-Free",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kpalmvik/se-free.git"
+  },
+  "author": "Kristofer Palmvik <kristofer@palmvik.se> (http://kristofer.palmvik.se/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kpalmvik/se-free/issues"
+  },
+  "homepage": "https://github.com/kpalmvik/se-free",
+  "dependencies": {}
+}
