@@ -1,0 +1,6 @@
+script:
+  - npm run test:single
+  - npm run build
+branches:
+  only:
+    - master

@@ -2,10 +2,12 @@
   "name": "se-free",
   "version": "0.0.1",
   "description": "Se-Free",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "mocha src/index.test.js -w",
-    "test:single": "mocha src/index.test.js"
+    "test": "mocha src/index.test.js -w --compilers js:babel/register",
+    "test:single": "mocha src/index.test.js --compilers js:babel/register",
+    "prebuild": "rm -rf dist && mkdir dist",
+    "build": "babel src/index.js -o dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +21,7 @@
   "homepage": "https://github.com/kpalmvik/se-free",
   "dependencies": {},
   "devDependencies": {
+    "babel": "5.8.29",
     "chai": "3.4.0",
     "ghooks": "0.3.2",
     "mocha": "2.3.3"
