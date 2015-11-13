@@ -4,8 +4,8 @@
   "description": "Se-Free",
   "main": "dist/index.js",
   "scripts": {
-    "test": "mocha src/index.test.js -w --compilers js:babel/register",
-    "test:single": "mocha src/index.test.js --compilers js:babel/register",
+    "test": "mocha tests/index.test.js -w --compilers js:babel/register",
+    "test:single": "mocha tests/index.test.js --compilers js:babel/register",
     "lint": "eslint src/*.js",
     "lint-test": "npm run lint && npm run test:single",
     "prebuild": "rm -rf dist && mkdir dist",
@@ -21,17 +21,21 @@
     "url": "https://github.com/kpalmvik/se-free/issues"
   },
   "homepage": "https://github.com/kpalmvik/se-free",
-  "dependencies": {},
   "devDependencies": {
     "babel": "5.8.29",
     "chai": "3.4.0",
+    "chai-as-promised": "5.1.0",
     "eslint": "1.7.3",
     "ghooks": "0.3.2",
-    "mocha": "2.3.3"
+    "mocha": "2.3.3",
+    "nock": "2.15.0"
   },
   "config": {
     "ghooks": {
       "pre-commit": "npm run lint-test"
     }
+  },
+  "dependencies": {
+    "request-promise": "1.0.2"
   }
 }
