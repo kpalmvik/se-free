@@ -9,7 +9,7 @@ chai.use(chaiAsPromised);
 
 describe('checking isFree for a domain', () => {
   it('should return FREE if the domain is available',() => {
-    const availableDomain = 'www.available.se',
+    const availableDomain = 'available.se',
           nockServer = nock(serverUrl)
                     .get('/free?q=' + availableDomain)
                     .reply(200, 'free ' + availableDomain);
@@ -18,7 +18,7 @@ describe('checking isFree for a domain', () => {
   });
 
   it('should return NOT_VALID if the domain is not valid',() => {
-    const invalidDomain = 'www.not_valid.se',
+    const invalidDomain = 'not_valid.se',
           nockServer = nock(serverUrl)
                     .get('/free?q=' + invalidDomain)
                     .reply(200, 'not_valid ' + invalidDomain);
@@ -27,7 +27,7 @@ describe('checking isFree for a domain', () => {
   });
 
   it('should return OCCUPIED if the domain is occupied',() => {
-    const occupiedDomain = 'www.occupied.se',
+    const occupiedDomain = 'occupied.se',
           nockServer = nock(serverUrl)
                     .get('/free?q=' + occupiedDomain)
                     .reply(200, 'occupied ' + occupiedDomain);
@@ -36,7 +36,7 @@ describe('checking isFree for a domain', () => {
   });
 
   it('should reject if the call fails with a HTTP error',() => {
-    const exampleDomain = 'www.example.se',
+    const exampleDomain = 'example.se',
           nockServer = nock(serverUrl)
                     .get('/free?q=' + exampleDomain)
                     .reply(500, 'occupied ' + exampleDomain);
@@ -45,7 +45,7 @@ describe('checking isFree for a domain', () => {
   });
 
   it('should reject if the call returns something unknown',() => {
-    const exampleDomain = 'www.example.se',
+    const exampleDomain = 'example.se',
           nockServer = nock(serverUrl)
                     .get('/free?q=' + exampleDomain)
                     .reply(200, 'unknown-response');
@@ -54,7 +54,7 @@ describe('checking isFree for a domain', () => {
   });
 
   it('should reject if the call does not return any content',() => {
-    const exampleDomain = 'www.example.se',
+    const exampleDomain = 'example.se',
           nockServer = nock(serverUrl)
                     .get('/free?q=' + exampleDomain)
                     .reply(200, null);
