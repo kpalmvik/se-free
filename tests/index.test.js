@@ -35,5 +35,12 @@ describe('checking isFree for a domain', () => {
     return isFree(occupiedDomain).should.eventually.equal('OCCUPIED');
   });
 
+  it('should reject if the call fails with a HTTP error',() => {
+    const exampleDomain = 'www.example.se',
+          nockServer = nock(serverUrl)
+                    .get('/free?q=' + exampleDomain)
+                    .reply(500, 'occupied ' + exampleDomain);
 
+    return isFree(exampleDomain).should.eventually.be.rejected;
+  });
 });
