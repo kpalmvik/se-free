@@ -3,10 +3,17 @@ export default function isFree(domain) {
         domainAvailabilityUrl = 'http://free.iis.se/free?q=';
 
   return request(domainAvailabilityUrl + domain)
-    .then((htmlString) => {
-      if (htmlString.split(' ')[0] === 'free') {
+    .then((responseData) => {
+      const domainAvailability = responseData.split(' ')[0];
+
+      if (domainAvailability === 'free') {
         return 'FREE';
       }
+
+      if(domainAvailability === 'not_valid') {
+        return 'NOT_VALID';
+      }
+
       return '';
     });
 }
