@@ -19,10 +19,10 @@ The isFree function returns a promise. If the backend service is responding in t
 If the backend for some reason does not respond in an expected way, the promise is rejected.
 
 ```javascript
-const seFree = require('se-free'),
-      domain = 'www.example.se';
+const isFree = require('se-free'),
+      domain = 'example.se';
 
-seFree.isFree(domain)
+isFree(domain)
   .then((result) => {
     if(result === 'FREE') {
       console.log('The domain "%s" is available', domain);
