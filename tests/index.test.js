@@ -43,4 +43,13 @@ describe('checking isFree for a domain', () => {
 
     return isFree(exampleDomain).should.eventually.be.rejected;
   });
+
+  it('should reject if the call returns something unknown',() => {
+    const exampleDomain = 'www.example.se',
+          nockServer = nock(serverUrl)
+                    .get('/free?q=' + exampleDomain)
+                    .reply(200, 'unknown-response');
+
+    return isFree(exampleDomain).should.eventually.be.rejected;
+  });
 });

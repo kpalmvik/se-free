@@ -18,6 +18,6 @@ export default function isFree(domain) {
         return 'OCCUPIED';
       }
 
-      return '';
+      reject();
     });
 }
