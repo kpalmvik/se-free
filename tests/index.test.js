@@ -26,4 +26,14 @@ describe('checking isFree for a domain', () => {
     return isFree(invalidDomain).should.eventually.equal('NOT_VALID');
   });
 
+  it('should return OCCUPIED if the domain is occupied',() => {
+    const occupiedDomain = 'www.occupied.se',
+          nockServer = nock(serverUrl)
+                    .get('/free?q=' + occupiedDomain)
+                    .reply(200, 'occupied ' + occupiedDomain);
+
+    return isFree(occupiedDomain).should.eventually.equal('OCCUPIED');
+  });
+
+
 });

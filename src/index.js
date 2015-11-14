@@ -14,6 +14,10 @@ export default function isFree(domain) {
         return 'NOT_VALID';
       }
 
+      if(domainAvailability === 'occupied') {
+        return 'OCCUPIED';
+      }
+
       return '';
     });
 }
