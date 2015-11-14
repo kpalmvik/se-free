@@ -1,23 +1,19 @@
-var chai = require('chai');
-var should = chai.should();
-var chaiAsPromised = require('chai-as-promised');
+const chai = require('chai'),
+      should = chai.should(),
+      chaiAsPromised = require('chai-as-promised'),
+      nock = require('nock'),
+      isFree = require('../src/index.js'),
+      serverUrl = 'http://free.iis.se/';
 
 chai.use(chaiAsPromised);
 
-var nock = require('nock'),
-  helloWorld;
+describe('checking isFree for a domain', () => {
+  it('should return FREE if the domain is available',() => {
+    const availableDomain = 'www.available.se';
+    const nockServer = nock(serverUrl)
+                    .get('/free?q=' + availableDomain)
+                    .reply(200, 'free ' + availableDomain);
 
-describe('calling the default Hello function', () => {
-  beforeEach(() => {
-    helloWorld = nock('http://www.helloworld.com')
-                    .get('/')
-                    .reply(200,
-                      'Hello world'
-                    );
-  });
-
-  it('should return Hello',() => {
-    let hello = require('../src/index.js');
-    return hello('helloworld').should.eventually.equal('Hello world');
+    return isFree(availableDomain).should.eventually.equal('FREE');
   });
 });

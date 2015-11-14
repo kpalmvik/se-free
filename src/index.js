@@ -1,6 +1,12 @@
-export default function Hello(domain) {
-  var rp = require('request-promise');
+export default function isFree(domain) {
+  const request = require('request-promise'),
+        domainAvailabilityUrl = 'http://free.iis.se/free?q=';
 
-  return rp('http://www.' + domain + '.com')
-    .promise();
+  return request(domainAvailabilityUrl + domain)
+    .then((htmlString) => {
+      if (htmlString.split(' ')[0] === 'free') {
+        return 'FREE';
+      }
+      return '';
+    });
 }
