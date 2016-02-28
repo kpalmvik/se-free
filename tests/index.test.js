@@ -11,8 +11,9 @@ describe('checking isFree for a domain', () => {
   it('should return FREE if the domain is available',() => {
     const availableDomain = 'available.se',
           nockServer = nock(serverUrl)
-                    .get('/free?q=' + availableDomain)
-                    .reply(200, 'free ' + availableDomain);
+                        .get('/free')
+                        .query({'q': availableDomain})
+                        .reply(200, 'free ' + availableDomain);
 
     return isFree(availableDomain).should.eventually.equal('FREE');
   });
@@ -20,8 +21,9 @@ describe('checking isFree for a domain', () => {
   it('should return NOT_VALID if the domain is not valid',() => {
     const invalidDomain = 'not_valid.se',
           nockServer = nock(serverUrl)
-                    .get('/free?q=' + invalidDomain)
-                    .reply(200, 'not_valid ' + invalidDomain);
+                        .get('/free')
+                        .query({'q': invalidDomain})
+                        .reply(200, 'not_valid ' + invalidDomain);
 
     return isFree(invalidDomain).should.eventually.equal('NOT_VALID');
   });
@@ -29,8 +31,9 @@ describe('checking isFree for a domain', () => {
   it('should return OCCUPIED if the domain is occupied',() => {
     const occupiedDomain = 'occupied.se',
           nockServer = nock(serverUrl)
-                    .get('/free?q=' + occupiedDomain)
-                    .reply(200, 'occupied ' + occupiedDomain);
+                        .get('/free')
+                        .query({'q': occupiedDomain})
+                        .reply(200, 'occupied ' + occupiedDomain);
 
     return isFree(occupiedDomain).should.eventually.equal('OCCUPIED');
   });
@@ -38,8 +41,9 @@ describe('checking isFree for a domain', () => {
   it('should reject if the call fails with a HTTP error',() => {
     const exampleDomain = 'example.se',
           nockServer = nock(serverUrl)
-                    .get('/free?q=' + exampleDomain)
-                    .reply(500, 'occupied ' + exampleDomain);
+                        .get('/free')
+                        .query({'q': exampleDomain})
+                        .reply(500, 'occupied ' + exampleDomain);
 
     return isFree(exampleDomain).should.eventually.be.rejected;
   });
@@ -47,8 +51,9 @@ describe('checking isFree for a domain', () => {
   it('should reject if the call returns something unknown',() => {
     const exampleDomain = 'example.se',
           nockServer = nock(serverUrl)
-                    .get('/free?q=' + exampleDomain)
-                    .reply(200, 'unknown-response');
+                        .get('/free')
+                        .query({'q': exampleDomain})
+                        .reply(200, 'unknown-response');
 
     return isFree(exampleDomain).should.eventually.be.rejected;
   });
@@ -56,8 +61,9 @@ describe('checking isFree for a domain', () => {
   it('should reject if the call does not return any content',() => {
     const exampleDomain = 'example.se',
           nockServer = nock(serverUrl)
-                    .get('/free?q=' + exampleDomain)
-                    .reply(200, null);
+                        .get('/free')
+                        .query({'q': exampleDomain})
+                        .reply(200, null);
 
     return isFree(exampleDomain).should.eventually.be.rejected;
   });
@@ -68,8 +74,9 @@ describe('checking isFree for an internationalized domain', () => {
     const availableDomain = 'räksmörgås.se',
           availableDomainEncoded = 'xn--rksmrgs-5wao1o.se',
           nockServer = nock(serverUrl)
-                    .get('/free?q=' + availableDomainEncoded)
-                    .reply(200, 'free ' + availableDomainEncoded)
+                        .get('/free')
+                        .query({'q': availableDomainEncoded})
+                        .reply(200, 'free ' + availableDomainEncoded)
 
     return isFree(availableDomain).should.eventually.equal('FREE');
   });
