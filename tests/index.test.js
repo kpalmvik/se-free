@@ -62,3 +62,15 @@ describe('checking isFree for a domain', () => {
     return isFree(exampleDomain).should.eventually.be.rejected;
   });
 });
+
+describe('checking isFree for an internationalized domain', () => {
+  it('should return FREE if the domain is available',() => {
+    const availableDomain = 'räksmörgås.se',
+          availableDomainEncoded = 'xn--rksmrgs-5wao1o.se',
+          nockServer = nock(serverUrl)
+                    .get('/free?q=' + availableDomainEncoded)
+                    .reply(200, 'free ' + availableDomainEncoded)
+
+    return isFree(availableDomain).should.eventually.equal('FREE');
+  });
+});

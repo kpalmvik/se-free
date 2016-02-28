@@ -1,8 +1,10 @@
 export default function isFree(domain) {
   const request = require('request-promise'),
-        domainAvailabilityUrl = 'http://free.iis.se/free?q=';
+        uts46 = require('idna-uts46'),
+        domainAvailabilityUrl = 'http://free.iis.se/free?q=',
+        idnEncodedDomain = uts46.toAscii(domain);
 
-  return request(domainAvailabilityUrl + domain)
+  return request(domainAvailabilityUrl + idnEncodedDomain)
     .then((data) => {
       const returnValues = {
               'free': 'FREE',
