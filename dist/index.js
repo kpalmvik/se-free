@@ -7,9 +7,11 @@ exports['default'] = isFree;
 
 function isFree(domain) {
   var request = require('request-promise'),
-      domainAvailabilityUrl = 'http://free.iis.se/free?q=';
+      uts46 = require('idna-uts46'),
+      domainAvailabilityUrl = 'http://free.iis.se/free?q=',
+      idnEncodedDomain = uts46.toAscii(domain);
 
-  return request(domainAvailabilityUrl + domain).then(function (data) {
+  return request(domainAvailabilityUrl + idnEncodedDomain).then(function (data) {
     var returnValues = {
       'free': 'FREE',
       'not_valid': 'NOT_VALID',
