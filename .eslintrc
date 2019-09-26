@@ -1,32 +1,7 @@
 {
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module"
-  },
+  "extends": "airbnb-base",
+  "plugins": ["jest"],
   "env": {
-    "mocha": true,
-    "node": true
-  },
-  "rules": {
-    "strict": 0,
-    "no-empty": 0,
-    "indent": [2, 2, {
-      "VariableDeclarator": {
-        "var": 2,
-        "let": 2,
-        "const": 3
-      }
-    }],
-    "quotes": [1, "single"],
-    "no-multi-spaces": [1, {
-      "exceptions": {
-        "VariableDeclarator": true,
-        "FunctionExpression": true
-      }
-    }],
-    "key-spacing": [0, {
-      "align": "value"
-    }],
-    "no-underscore-dangle": 0
+    "jest/globals": true
   }
 }
