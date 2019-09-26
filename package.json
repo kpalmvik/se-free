@@ -1,7 +1,7 @@
 {
   "name": "se-free",
-  "version": "0.2.0",
-  "description": "Se-Free",
+  "version": "1.0.0",
+  "description": "Wraps the Domain Availability Service for Swedish .SE domains in a promised base interface. This makes it easy to check if a specified .SE domain is available for registration, already registered, or invalid.",
   "main": "dist/index.js",
   "scripts": {
     "test": "mocha tests/index.test.js -w --compilers js:babel/register",
