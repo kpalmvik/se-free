@@ -4,10 +4,9 @@
   "description": "Wraps the Domain Availability Service for Swedish .SE domains in a promised base interface. This makes it easy to check if a specified .SE domain is available for registration, already registered, or invalid.",
   "main": "dist/index.js",
   "scripts": {
-    "test": "mocha tests/index.test.js -w --compilers js:babel/register",
-    "test:single": "mocha tests/index.test.js --compilers js:babel/register",
+    "test": "jest",
     "lint": "eslint src/*.js",
-    "lint-test": "npm run lint && npm run test:single",
+    "lint-test": "npm run lint && npm run test",
     "prebuild": "rm -rf dist && mkdir dist",
     "build": "babel src/index.js -o dist/index.js"
   },
@@ -22,13 +21,14 @@
   },
   "homepage": "https://github.com/kpalmvik/se-free",
   "devDependencies": {
-    "babel": "5.8.29",
-    "chai": "3.4.0",
-    "chai-as-promised": "5.1.0",
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "babel-jest": "^24.9.0",
     "eslint": "6.4.0",
     "ghooks": "0.3.2",
-    "mocha": "2.3.3",
-    "nock": "2.15.0"
+    "jest": "^24.9.0",
+    "nock": "11.3.5"
   },
   "config": {
     "ghooks": {
