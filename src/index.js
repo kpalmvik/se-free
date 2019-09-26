@@ -17,6 +17,6 @@ export default function isFree(domain) {
         return returnValues[domainAvailability];
       }
 
-      reject();
+      return Promise.reject(new Error('Unknown error'));
     });
 }
