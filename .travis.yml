@@ -2,8 +2,7 @@ language: node_js
 node_js:
 - stable
 script:
-- npm run test:single
-- npm run build
+- yarn run build
 branches:
   only:
   - master
