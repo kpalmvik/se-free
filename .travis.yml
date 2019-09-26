@@ -1,9 +1,18 @@
 language: node_js
 node_js:
-  - "stable"
+- stable
 script:
-  - npm run test:single
-  - npm run build
+- npm run test:single
+- npm run build
 branches:
   only:
-    - master
+  - master
+deploy:
+  provider: npm
+  email: kristofer@palmvik.se
+  api_key:
+    secure: N8Lg/JEoScw50ep5rSZAgfOsn7+3esFgMa3ySdo7Ih1ciyxfkOEuNjY21uy8W8+jlqjDJDB2zKonrVi3OzgpY05JTSDZL2UBfSj6QU52Skgo/gBjMGS5VphXDXow27bOk+ax1ZMTmKn5GokLgoBJ/zqQvXewETNU2hQhqJijZfznDnT1vnpHBnv0nVk4JVzIubpQ1dI8h8yBetFnmTO8/D3nqO3wKxATCGgu40VgjOB97yiNfwNPIAoNul4UAVbAY4/cMTQ+qd3jlN6+LIY3JsJ+4mWZp1Qh2+ag38/2PkITLyKfEAKLazNiILI4ayMluh2GB4ekyZ/GcAjfLxiI7xZNBpBbiTUlGzCsvX8UGnTR64U5GOelI7CVuN45ahuDXJxAo4paz+AKaZwguK6pdreosaQ9cTauw9VXccnJdwsiB6+Dhkvsz/A8UtEjdgtVHuKw32Zxt+FmpB3GESCiXkHFMfuLEbE1NHBhH9z+X9BqyNgXdhLRztDmdtvNI+y8z3WIZ5HOmGiFO1yGOLoReqYCs6t6Ekwbzdq8WN5wzFtHOQYn+cVzNAKSXLFXtSeGJsiEKJ0Qe7RwOP0Jf7KOovzpejv1jWagVyzMTSYp5r09XPpPAz5WnMFd0uYjlG6gRzN+M6BhGuYV4Yb0JxogE7DJPr7fO/sXS9+q8sWLB1Q=
+  on:
+    branch: master
+    tags: true
+    repo: kpalmvik/se-free
