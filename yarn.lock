@@ -2370,12 +2370,12 @@ iconv-lite@0.4.24, iconv-lite@^0.4.24, iconv-lite@^0.4.4:
   dependencies:
     safer-buffer ">= 2.1.2 < 3"
 
-idna-uts46@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/idna-uts46/-/idna-uts46-1.0.1.tgz#bfa1d44b22937ce14e106463ac814e9d1449b777"
-  integrity sha1-v6HUSyKTfOFOEGRjrIFOnRRJt3c=
+idna-uts46@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/idna-uts46/-/idna-uts46-1.1.0.tgz#be098b2b7c1cabfbef87a8b80f626fac37366aea"
+  integrity sha1-vgmLK3wcq/vvh6i4D2JvrDc2auo=
   dependencies:
-    punycode "^1.3.2"
+    punycode "^2.1.0"
 
 ignore-walk@^3.0.1:
   version "3.0.1"
@@ -4017,7 +4017,7 @@ pump@^3.0.0:
     end-of-stream "^1.1.0"
     once "^1.3.1"
 
-punycode@^1.3.2, punycode@^1.4.1:
+punycode@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
   integrity sha1-wNWmOycYgArY4esPpSachN1BhF4=
