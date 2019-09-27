@@ -32,3 +32,5 @@ function isFree(domain) {
     return Promise.reject(new Error('Unknown error'));
   });
 }
+
+module.exports = exports.default;
