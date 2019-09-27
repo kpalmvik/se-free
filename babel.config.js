@@ -7,4 +7,5 @@ module.exports = {
       modules: 'commonjs',
     }],
   ],
+  plugins: ['add-module-exports'],
 };
