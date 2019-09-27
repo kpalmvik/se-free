@@ -4,6 +4,7 @@ module.exports = {
       targets: {
         node: '4',
       },
+      modules: 'commonjs',
     }],
   ],
 };
