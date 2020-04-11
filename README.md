@@ -1,15 +1,22 @@
 # se-free
-Wraps the Domain Availability Service for Swedish .SE domains in a promised base interface available from [npm](https://www.npmjs.com/). This makes it easy to check if a specified .SE domain is available for registration, already registered, or invalid.
+Wraps the [Domain Availability Service for Swedish .SE domains](http://free.iis.se) in a promised base interface available from [npm](https://www.npmjs.com/package/se-free). This makes it easy to check if a specified .SE domain is available for registration, already registered, or invalid.
 
 The same interface may also be used to check availability of a .SE contact identifier.
 
 ## Usage
 
 ### Installation
-node
+Using npm
 ```
-$ npm install se-free --save
+$ npm install se-free
 ```
+
+or, using yarn:
+
+```
+$ yarn add se-free
+```
+
 ### Check domain availability
 The isFree function returns a promise. If the backend service is responding in the expected way, the promise is fulfilled with one of the following values:
 * FREE: The domain is available for registration
@@ -19,19 +26,20 @@ The isFree function returns a promise. If the backend service is responding in t
 If the backend for some reason does not respond in an expected way, the promise is rejected.
 
 ```javascript
-const isFree = require('se-free'),
-      domain = 'example.se';
+const isFree = require('se-free');
+
+const domain = 'example.se';
 
 isFree(domain)
   .then((result) => {
     if(result === 'FREE') {
-      console.log('The domain "%s" is available', domain);
+      console.log(`The domain ${domain} is available`);
     } else {
-      console.log('It is not possible to register the domain "%s".', domain);
+      console.log(`It is not possible to register the domain ${domain}`);
     }
   })
   .catch((err) => {
-    console.log('Something went wrong.');
+    console.log('Something went wrong.', err);
   });
 ```
 
@@ -42,12 +50,12 @@ The backend service has the following restrictions:
 * A maximum of 34 requests per second and client.
 * A client will be temporarily blocked after making more than 34 requests per second. The client must be idle for one second to restore access to the service.
 
-See [Rules and description of "free"]( https://www.iis.se/english/domains/free/rules-and-description-of-free/) from [IIS](https://www.iis.se) for more details.
+See [Rules and description of "free"]( https://internetstiftelsen.se/domaner/registrera-ett-domannamn/regler-och-beskrivning-av-domannamnssokningar/) from [Internetstiftelsen](https://internetstiftelsen.se/) for more details.
 
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2015 Kristofer Palmvik
+Copyright (c) 2015-2020 Kristofer Palmvik
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
