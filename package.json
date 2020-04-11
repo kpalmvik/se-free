@@ -43,6 +43,9 @@
     "idna-uts46": "1.1.0",
     "node-fetch": "^2.6.0"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "eslintIgnore": [
     "dist/*"
   ]
