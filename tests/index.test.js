@@ -42,7 +42,7 @@ describe('checking isFree for a domain', () => {
       .query({ q: exampleDomain })
       .reply(500, `occupied ${exampleDomain}`);
 
-    return expect(isFree(exampleDomain)).rejects.toThrow();
+    return expect(isFree(exampleDomain)).rejects.toThrow(new Error('Internal Server Error'));
   });
 
   it('should reject if the request returns an unknown response', () => {
@@ -52,7 +52,7 @@ describe('checking isFree for a domain', () => {
       .query({ q: exampleDomain })
       .reply(200, 'unknown-response');
 
-    return expect(isFree(exampleDomain)).rejects.toThrow();
+    return expect(isFree(exampleDomain)).rejects.toThrow(new Error('Unknown error'));
   });
 
   it('should reject if the request does not return any content', () => {
@@ -62,7 +62,7 @@ describe('checking isFree for a domain', () => {
       .query({ q: exampleDomain })
       .reply(200, null);
 
-    return expect(isFree(exampleDomain)).rejects.toThrow();
+    return expect(isFree(exampleDomain)).rejects.toThrow(new Error('Unknown error'));
   });
 });
 
