@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "idna-uts46": "1.1.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^3.2.4"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
